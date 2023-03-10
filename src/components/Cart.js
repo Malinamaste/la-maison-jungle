@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import '../styles/Cart.css'
 
 function Cart({ cart, updateCart }) {
@@ -6,6 +6,21 @@ function Cart({ cart, updateCart }) {
   const total = cart.reduce(
     (acc, plantType) => acc + plantType.amount * plantType.price, 0
   )
+
+  // useEffect permet d'effectuer notre effet une fois le rendu du composant terminé. Ici je veux que l'alerte ne s'affiche que lorsque le total de mon panier change :
+  /*useEffect(() => {
+    alert(`J'aurai ${total}€ à payer 💸`)
+  }, [total])*/
+
+  // Pour exécuter un effet uniquement après le 1er render de mon composant pour récupérer des données sur une API : il faut renseigner un tableau de dépendances vide
+  /*useEffect(() => {
+    alert('Bienvenue dans La maison jungle')
+  }, [])*/
+
+  // Mettre à jour le titre de l'onglet du navigateur :
+  useEffect(() => {
+    document.title = `LMJ: ${total}€ d'achats`
+  }, [total])
 
   return isOpen ? (
     <div className='lmj-cart'>
