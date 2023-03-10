@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import '../styles/Footer.css'
 
 function Footer({ cart }) {
@@ -16,10 +16,10 @@ function Footer({ cart }) {
     console.log(`3️⃣ Cette alerte s'affiche la première fois et quand mon panier est mis à jour`)
   }, [cart])*/
 
-  useEffect(() => {
+  /*useEffect(() => {
     return () =>
       console.log(`4️⃣ Cette alerte s'affiche quand Footer est retiré du DOM`)
-  })
+  })*/
 
   function handleInput(e) {
     setInputValue(e.target.value)
